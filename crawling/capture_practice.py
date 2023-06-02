@@ -27,8 +27,10 @@ import os
 
 service = Service(ChromeDriverManager().install())
 options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
 options.add_experimental_option("detach", True)  # to keep browser open
-driver = webdriver.Chrome(service=service, options=options)
+driver = webdriver.Chrome(executable_path='/usr/bin/chromium-browser', service=service, options=options)
 
 wb = load_workbook("Kream.xlsx")
 ws1 = wb["원본데이터"]
